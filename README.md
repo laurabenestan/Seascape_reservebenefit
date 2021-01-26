@@ -88,4 +88,4 @@ PC2 is strongly linked to the chlorophyll gradient.
 | Mullus surmuletus | -- | 3.76e- 1 |
 | Serranus cabrilla | 0.03343 | 1.01e- 4 |
 
- 
+<img align="center" height="240" src="01-genetic_diversity/diversitygen.png"></img>

@@ -14,18 +14,18 @@ Using a state-of-the-art approach based on seascape genomics, we aim to:
 
 ## Genetic diversity estimation
 
-Genetic diversity is estimated with [Plink1.9](https://www.cog-genomics.org/plink/1.9/basic_stats), though the use of the --het function that adjust the calculation with the sample size. 
-We transformed the output obtained from PLINK to Observed heterozygosity values for each SNP datasets (neutral and adaptive).
+Genetic diversity is estimated with [Plink1.9](https://www.cog-genomics.org/plink/1.9/basic_stats).
+To do so, we  use of the `--het` function that adjust the calculation of observed heterozygosity with sample size. 
+We transformed the output obtained from PLINK to observed heterozygosity values - that represents genetic diversity - for each SNP datasets (neutral and adaptive).
 
 ## Testing the difference between genetic diversity of individuals sampled inside and outside one of the 8 marine reserves sampled for the project
 
-We want to know the differences of the genetic diversity (hereafter observed heterozygosity) for each species regarding the category "Inside/outside".
-First, we check the distribution of observed heterozygosity and we test the normality of the distribution using Shapiro test.
+We want to know the differences of the genetic diversity for each species regarding the category inside/outside a marine reserve.
+First, we check the distribution of genetic diversity overall and we test the normality of the distribution using a Shapiro test (`shapito.test()` function).
 
 The observed heterozygosity does not follow normality.
 As is highly skew to positive values. It seems like a beta distribution but we will check it later.
-
-First, we considered a Wilcoxon test to compare observed heterozygosity between samples inside/outside a marine reserve.
+First, we perform a Wilcoxon test to compare genetic diversity between samples inside/outside a marine reserve.
 
 #### Neutral genetic diversity inside/outside for the three species
 
@@ -43,21 +43,21 @@ First, we considered a Wilcoxon test to compare observed heterozygosity between 
 | Mullus surmuletus | 11175 | 9.99e-1 |
 | Serranus cabrilla | 22082 | 3.50e-4 |
 
-Wilcoxon Signed Rank test revealed that both neutral and adaptive observed heterozygosity were significantly different for Serranus cabrilla but not for Diplodus sargus and Mullus surmuletus.
+Wilcoxon Signed Rank test revealed that both neutral and adaptive genetic diversity are significantly different for Serranus cabrilla but not for Diplodus sargus and Mullus surmuletus.
 
 
-<img align="center" height="240" src="01-genetic_diversity/FigS2.pdf"></img>
+<img align="center" height="240" src="01-genetic_diversity/hetserranus.png"></img>
 
-According to our expectation, genetic diversity would be higher in non impacted areas such as a marine reserve.
-Yet, here we observed the opposite trend. 
-So, we want to explore more on the environmental determinant of genetic diversity and identify which determinant may influence genetic diversity in the three species.
+Our predictions are that genetic diversity would be higher in protected areas, such as a marine reserve.
+However, here we observe the opposite trend. 
+We therefore want to further explore the environmental determinant of genetic diversity and identify which determinant can influence genetic diversity in the three species.
 
 ##  Principal components on 24 seascape features that includes salinity, chlorophyll and temperature
 
-We perform a Principal Component Analysis (PCA) on 24 seascape features to avoid issues regarding to collinearity.
+We perform a Principal Component Analysis (PCA) on 24 seascape features to avoid collinearity problems.
 We keep 3 axes of the PCA based on the Kaiser criterion: keeping component that accounts for at least 5% of the total variance.
 
-<img align="center" height="240" src="01-genetic_diversity/pca_axes.png"></img>
+<img align="center" height="240" src="01-genetic_diversity/pcaaxes.png"></img>
 
 ## Exploring the distribution of genetic diversity
 

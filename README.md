@@ -1,6 +1,6 @@
 # seascape_reservebenefit
 
-The objective of this project is to dissect the link between genomics and environmental gradients of differentiation in a context of conservation of marine reserves.
+The objective of this project is to dissect the link between **genomics and environmental gradients of differentiation** in a context of conservation of **marine reserves**.
 Using a state-of-the-art approach based on seascape genomics, we aim to:
 
 01. Estimating genetic diversity within and outside a network of marine reserve, delineating the influence of spatial and environmental gradient on the genetic diversity observed
@@ -14,7 +14,7 @@ Using a state-of-the-art approach based on seascape genomics, we aim to:
 
 ## Genetic diversity estimation
 
-Genetic diversity is estimated with [Plink1.9](https://www.cog-genomics.org/plink/1.9/basic_stats).
+**Genetic diversity** is estimated with [Plink1.9](https://www.cog-genomics.org/plink/1.9/basic_stats).
 To do so, we  use of the `--het` function that adjust the calculation of observed heterozygosity with sample size. 
 We transformed the output obtained from PLINK to observed heterozygosity values - that represents genetic diversity - for each SNP datasets (neutral and adaptive).
 
@@ -43,13 +43,13 @@ First, we perform a Wilcoxon test to compare genetic diversity between samples i
 | Mullus surmuletus | 11175 | 9.99e-1 |
 | Serranus cabrilla | 22082 | 3.50e-4 |
 
-Wilcoxon Signed Rank test revealed that both neutral and adaptive genetic diversity are significantly different for Serranus cabrilla but not for Diplodus sargus and Mullus surmuletus.
+Wilcoxon Signed Rank test revealed that both neutral and adaptive genetic diversity are significantly different for *Serranus cabrilla* but not for *Diplodus sargus** and *Mullus surmuletus*.
 
 
 <img align="center" height="240" src="01-genetic_diversity/hetserranus.png"></img>
 
 Our predictions are that genetic diversity would be higher in protected areas, such as a marine reserve.
-However, here we observe the opposite trend. 
+However, here we observe the **opposite trend**. 
 We therefore want to further explore the environmental determinant of genetic diversity and identify which determinant can influence genetic diversity in the three species.
 
 ##  Principal components on 24 seascape features that includes salinity, chlorophyll and temperature
@@ -75,3 +75,17 @@ We then compare the The Akaike information criterion (AIC) for the two models.
 | normal distribution | -1929.488 |
 
 Here, AIC provides a means for model selection and the preferred model is the one built using beta distribution.
+
+## Build a model with genetic diversity explained by seascape features variation
+
+We test several models of genetic diversity explained by one of the 3 main principal component axes representing seascape features.
+The only significant variable is **PC2** for *Diplodus sargus* and *Serranus cabrilla*.
+PC2 is strongly linked to the chlorophyll gradient.
+
+| Species | R2 | p.value
+|--------|--------------------------------------------------|-------------|
+| Diplodus sargus | 0.0135 | 4.61e- 2 | 
+| Mullus surmuletus | -- | 3.76e- 1 |
+| Serranus cabrilla | 0.03343 | 1.01e- 4 |
+
+ 

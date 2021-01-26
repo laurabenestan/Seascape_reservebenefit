@@ -7,6 +7,7 @@ library(broom)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
+library(factoextra)
 
 ### Download genetic diversity, distances and environmental information
 distances_mpa <- read.table("distances_to_mpa_all.txt",header=TRUE,sep="\t")
@@ -50,16 +51,11 @@ morpho_distances_all %>%
 morpho_distances_all %>% group_by(SPECIES) %>%
   do(fitGen = tidy(lm(NEUTRAL_HET ~ distance, data = .))) %>% unnest(fitGen)
 
-### Check the fitted values
-serranus_morpho_fish_het$PREDICTED_NEUTRAL_HET <- glm_serranus$fitted.values
-head(serranus_morpho_fish_het)
-
-plot(density(resid(glm_serranus, type='response')))
 
 ### Non parametric tests
 morpho_distances_all %>% 
   group_by(SPECIES)  %>% 
-  do(tidy(wilcox.test(NEUTRAL_HET~ BUFFER5, data = .))) %>% 
+  do(tidy(wilcox.test(ADAPTIVE_HET~ BUFFER5, data = .))) %>% 
   ungroup()
 
 ### Remove south effect
@@ -101,6 +97,10 @@ pca_axis$IND <- env$labels
 
 ### PCA on environmental variables
 morpho_distances_env <- merge(x=morpho_distances_all,y=pca_axis,by.x=c("INDV"),by.y=c("IND"))
+
+### Check the number of axis to keep
+fviz_eig(ePCA)
+
 
 ################### DISTRIBUTION OF HET ####
 

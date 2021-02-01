@@ -1,4 +1,11 @@
-
+##################################################################################
+#' This script produces the Benestan et al. 2021 paper Figure 1 and 2, i.e.
+#'HERE ADD DETAILS
+#'
+#' @author Laura Benestan, \email{lmbenestan@@gmail.com},
+#'
+#' @date 2021/01/02
+#################################################################################
 
 ### Download libraries
 pkgs <- c('tidyr','ggplot2','cowplot','broom','dplyr','ggpubr','factoextra','here',
@@ -10,13 +17,14 @@ ip   <- unlist(lapply(pkgs, require, character.only = TRUE, quietly = TRUE))
 # Download Data ---
 
     # Geo distances
-     distances_mpa <- read.table("distances_to_mpa_all.txt",header=TRUE,sep="\t")
+      distances_mpa <- get(load(here::here("01-genetic_diversity","distances_mpa.RData")))
     
     # genetic diversity
-    het <- read.table("genetic_diversity_all.txt",header=TRUE,sep="\t", dec=".")
+      het <- get(load(here::here("01-genetic_diversity","het.RData")))
     
     # environmental information
-    env_habitats <- read.table("env_data_landscape.txt", header=TRUE)
+      env_habitats<- get(load(here::here("01-genetic_diversity","env_habitats.RData")))
+
 
 
 ################### TEST FOR INSIDE/OUTSIDE RESERVE ####
@@ -80,9 +88,13 @@ g2 <- ggline(serranus_morpho_fish_het, x = "BUFFER5", y = "ADAPTIVE_HET",
 g2
 
 ### Save the graph
-pdf(file = here::here("Fig1.pdf", height=5, width=10))
+pdf(file      = here::here("Fig1.pdf"),
+  width     = 10,
+  height    = 5
+)
 plot_grid(g1,g2)
 dev.off()
+
 
 
 ################### PCA FOR DATA ####
@@ -97,7 +109,7 @@ ePCA = prcomp(sEnvMatrix)
 
 # The principal components can be found in the $x matrix:
 pca_axis <- as.data.frame(ePCA$x)
-pca_axis$IND <- env$labels
+pca_axis$IND <- env_habitats$labels
 
 ### PCA on environmental variables
 morpho_distances_env <- merge(x=morpho_distances_all,y=pca_axis,by.x=c("INDV"),by.y=c("IND"))
@@ -171,8 +183,10 @@ serranus <- ggplot(data = subset(no_outliers, subset=no_outliers$SPECIES=="Serra
   annotation_custom(grob)
 serranus
 
-
-pdf(file = here::here("Fig2.pdf",width = 4, height=5))
+pdf(file      = here::here("Fig2.pdf"),
+    width     = 4,
+    height    = 5
+)
 plot_grid(diplodus, serranus, names="auto", ncol=1, nrow=2)
 dev.off()
 save.image("Fig2.RData")

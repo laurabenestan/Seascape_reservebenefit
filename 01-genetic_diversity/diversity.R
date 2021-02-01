@@ -1,14 +1,23 @@
+
+
 ### Download libraries
-pkgs <- c('tidyr','ggplot2','cowplot','broom','dplyr','ggpubr','factoextra','here')
+pkgs <- c('tidyr','ggplot2','cowplot','broom','dplyr','ggpubr','factoextra','here',
+          'fitdistrplus','logspline','betareg','grid')
 nip <- pkgs[!(pkgs %in% installed.packages())]
 nip <- lapply(nip, install.packages, dependencies = TRUE)
 ip   <- unlist(lapply(pkgs, require, character.only = TRUE, quietly = TRUE))
 
+# Download Data ---
 
-### Download genetic diversity, distances and environmental information
-distances_mpa <- read.table("distances_to_mpa_all.txt",header=TRUE,sep="\t")
-het <- read.table("genetic_diversity_all.txt",header=TRUE,sep="\t", dec=".")
-env_habitats <- read.table("env_data_landscape.txt", header=TRUE)
+    # Geo distances
+     distances_mpa <- read.table("distances_to_mpa_all.txt",header=TRUE,sep="\t")
+    
+    # genetic diversity
+    het <- read.table("genetic_diversity_all.txt",header=TRUE,sep="\t", dec=".")
+    
+    # environmental information
+    env_habitats <- read.table("env_data_landscape.txt", header=TRUE)
+
 
 ################### TEST FOR INSIDE/OUTSIDE RESERVE ####
 
@@ -71,15 +80,14 @@ g2 <- ggline(serranus_morpho_fish_het, x = "BUFFER5", y = "ADAPTIVE_HET",
 g2
 
 ### Save the graph
-pdf("Fig1.pdf", height=5, width=10)
+pdf(file = here::here("Fig1.pdf", height=5, width=10))
 plot_grid(g1,g2)
 dev.off()
 
+
 ################### PCA FOR DATA ####
 
-### Merge morpho_distances_all information with env information
-env <- read.table("env_data_landscape.txt",header=TRUE)
-EnvMatrix <- env[2:24]
+EnvMatrix <- env_habitats[2:24]
 
 ### Scale before PCA
 sEnvMatrix = scale(EnvMatrix, center = T, scale = T)
@@ -101,10 +109,7 @@ fviz_eig(ePCA)
 ################### DISTRIBUTION OF HET ####
 
 ### Download libraries
-library("fitdistrplus")
-library("logspline")
-library("betareg")
-library("grid")
+
 
 ### Find the distribution of genetic diversity
 descdist(as.vector(diplodus_morpho_fish_het$NEUTRAL_HET), discrete = FALSE)
@@ -166,7 +171,8 @@ serranus <- ggplot(data = subset(no_outliers, subset=no_outliers$SPECIES=="Serra
   annotation_custom(grob)
 serranus
 
-pdf("Fig2.pdf",width = 4, height=5)
+
+pdf(file = here::here("Fig2.pdf",width = 4, height=5))
 plot_grid(diplodus, serranus, names="auto", ncol=1, nrow=2)
 dev.off()
 save.image("Fig2.RData")

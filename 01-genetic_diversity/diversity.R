@@ -1,13 +1,9 @@
 ### Download libraries
-library(ggplot2)
-require(dplyr)
-library(ggpubr)
-library(cowplot)
-library(broom)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(factoextra)
+pkgs <- c('tidyr','ggplot2','cowplot','broom','dplyr','ggpubr','factoextra','here')
+nip <- pkgs[!(pkgs %in% installed.packages())]
+nip <- lapply(nip, install.packages, dependencies = TRUE)
+ip   <- unlist(lapply(pkgs, require, character.only = TRUE, quietly = TRUE))
+
 
 ### Download genetic diversity, distances and environmental information
 distances_mpa <- read.table("distances_to_mpa_all.txt",header=TRUE,sep="\t")

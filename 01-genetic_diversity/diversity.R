@@ -75,7 +75,7 @@ g2 <- ggline(serranus_morpho_fish_het, x = "BUFFER5", y = "ADAPTIVE_HET",
 g2
 
 ### Save the graph
-pdf("Fig2.pdf", height=5, width=10)
+pdf("Fig1.pdf", height=5, width=10)
 plot_grid(g1,g2)
 dev.off()
 

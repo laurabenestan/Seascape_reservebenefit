@@ -1,6 +1,6 @@
 ##################################################################################
 #' This script produces the Benestan et al. 2021 paper Figure 1 and 2, i.e.
-#'HERE ADD DETAILS
+#' HERE ADD DETAILS
 #'
 #' @author Laura Benestan, \email{lmbenestan@@gmail.com},
 #'
@@ -94,8 +94,6 @@ pdf(file      = here::here("Fig1.pdf"),
 )
 plot_grid(g1,g2)
 dev.off()
-
-
 
 ################### PCA FOR DATA ####
 

@@ -58,4 +58,3 @@ graph1 <- ggplot() +
          shape = guide_legend(override.aes = list(fill = "black")))
 graph1
 ggsave("Fig1.pdf", width=8, height=8)
-

@@ -69,4 +69,7 @@ We keep 3 axes of the PCA based on the Kaiser criterion: keeping component that 
 
 <img align="center" height="240" src="03-pca-env/Figure3_ecography.png"></img>
 
-# 03-Seascape genomics models using db-RDA
+# 04-Seascape genomics models using db-RDA
+
+<img align="center" height="240" src="04-db-rda/Figure5_ecography.png"></img>
+

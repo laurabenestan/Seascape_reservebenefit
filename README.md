@@ -13,10 +13,10 @@ Using a state-of-the-art approach based on seascape genomics, we aim to:
 -> Bringing useful recommendations for marine reserve design
 
 # 01a-Sampling design
-<img align="center" width="600" height="300" src="01-sampling/Figure1_ecography.png"></img>
+<img align="center" width="600" height="500" src="01-sampling/Figure1_ecography.png"></img>
 
 # 01b-Study design
-<img align="center" width="600" height="300"  src="01-sampling/Pipeline.png"></img>
+<img align="center" width="600" height="500"  src="01-sampling/Pipeline.png"></img>
 
 # 02-Genetic diversity
 

@@ -60,40 +60,13 @@ Our predictions are that genetic diversity would be higher in protected areas, s
 However, here we observe the **opposite trend**. 
 We therefore want to further explore the environmental determinant of genetic diversity and identify which determinant can influence genetic diversity in the three species.
 
+# 03-Seascape features
+
 ##  Principal components on 24 seascape features that includes salinity, chlorophyll and temperature
 
 We perform a Principal Component Analysis (PCA) on 24 seascape features to avoid collinearity problems.
 We keep 3 axes of the PCA based on the Kaiser criterion: keeping component that accounts for at least 5% of the total variance.
 
-<img align="center" height="240" src="01-genetic_diversity/screenpca.png"></img>
+<img align="center" height="240" src="01-genetic_diversity/Figure3_ecography.png"></img>
 
-## Exploring the distribution of genetic diversity
-
-We use the function `descdist`available in the package `fitdistrplus` to compute descriptive parameters of our empirical distribution.
-The kurtosis and squared skewness of our sample is plotted as a blue point named "Observation".
-
-<img align="center" height="240" src="01-genetic_diversity/observation.png"></img>
-
-It seems that possible distributions include beta distribution.
-We then compare the The Akaike information criterion (AIC) for the two models.
-
-| Model | AIC|
-|--------|-------------|
-| Beta distribution | -1909.775 | 
-| normal distribution | -1929.488 |
-
-Here, AIC provides a means for model selection and the preferred model is the one built using beta distribution.
-
-## Build a model with genetic diversity explained by seascape features variation
-
-We test several models of genetic diversity explained by one of the 3 main principal component axes representing seascape features.
-The only significant variable is **PC2** for *Diplodus sargus* and *Serranus cabrilla*.
-PC2 is strongly linked to the chlorophyll gradient.
-
-| Species | R2 | p.value
-|--------|--------------------------------------------------|-------------|
-| Diplodus sargus | 0.0135 | 4.61e- 2 | 
-| Mullus surmuletus | -- | 3.76e- 1 |
-| Serranus cabrilla | 0.03343 | 1.01e- 4 |
-
-<img align="center" height="240" src="01-genetic_diversity/diversitygen.png"></img>
+# 03-Seascape genomics models using db-RDA

@@ -49,7 +49,7 @@ First, we perform a Wilcoxon test to compare genetic diversity between samples i
 Wilcoxon Signed Rank test revealed that both neutral and adaptive genetic diversity are significantly different for *Serranus cabrilla* but not for *Diplodus sargus** and *Mullus surmuletus*.
 
 
-<img align="center" height="240" src="01-genetic_diversity/hetserranus.png"></img>
+<img align="center" height="240" src="01-genetic_diversity/Figure4.png"></img>
 
 Our predictions are that genetic diversity would be higher in protected areas, such as a marine reserve.
 However, here we observe the **opposite trend**. 

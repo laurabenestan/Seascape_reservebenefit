@@ -12,6 +12,11 @@ Using a state-of-the-art approach based on seascape genomics, we aim to:
 04. Is it better to create new marine reserves or to expand the size of the existing reserves?
 -> Bringing useful recommendations for marine reserve design
 
+# 01a-Sampling design
+<img align="center" height="240" src="01-sampling/Figure1_ecography.png"></img>
+
+# 01b-Study design
+<img align="center" height="240" src="01-sampling/Pipeline.png"></img>
 
 # 02-Genetic diversity
 

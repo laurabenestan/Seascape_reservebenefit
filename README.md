@@ -67,6 +67,6 @@ We therefore want to further explore the environmental determinant of genetic di
 We perform a Principal Component Analysis (PCA) on 24 seascape features to avoid collinearity problems.
 We keep 3 axes of the PCA based on the Kaiser criterion: keeping component that accounts for at least 5% of the total variance.
 
-<img align="center" height="240" src="01-genetic_diversity/Figure3_ecography.png"></img>
+<img align="center" height="240" src="03-pca-env/Figure3_ecography.png"></img>
 
 # 03-Seascape genomics models using db-RDA

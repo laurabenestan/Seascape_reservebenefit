@@ -1,4 +1,4 @@
-# seascape_reservebenefit
+# Code for the publication: ***"Contrasting influence of seascape, space and marine reserves on 61 genomic variation in multiple species"***
 
 The objective of this project is to dissect the link between **genomics and environmental gradients of differentiation** in a context of conservation of **marine reserves**.
 Using a state-of-the-art approach based on seascape genomics, we aim to:
